@@ -56,7 +56,10 @@ router.post('/login', async (req, res, next) => {
 
 		const token = jwt.sign({
 			userID: user.id,
-		}, process.env.JWT_SECRET)
+    }, process.env.JWT_SECRET)
+    
+    //this is will tell the client to save this token in its cookie jar
+    res.cookie("token", token)
 
 
     
@@ -71,5 +74,6 @@ router.post('/login', async (req, res, next) => {
 		next(err)
 	}
 });
+
 
 module.exports = router;

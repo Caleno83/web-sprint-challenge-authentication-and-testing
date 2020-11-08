@@ -17,7 +17,9 @@ function auth() {
             message: "You Shall Not Pass"
         }
         try {
-            const token = req.headers.authorization
+            // const token = req.headers.authorization
+            //this is for stretch cookies
+            const token = req.cookies.token
             if (!token) {
                 return res.status(401).json(authError)
             }
