@@ -22,8 +22,10 @@ server.use((err, req, res, next) => {
     });
   });
 
-server.get("/", (req, res) => {
-    res.send(`<h2>Welcome To My Module 3 Spring Challenge</h2>`);
-});
+  server.get("/", (req, res) => {
+	res.json({
+		message: "Welcome To My Module 3 Spring Challenge",
+	})
+})
 
 module.exports = server;
