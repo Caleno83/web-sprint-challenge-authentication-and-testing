@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const cookieParser = require("cookie-parser")
 
-// const authentication = require('../auth/authenticate-middleware.js');
+const { auth } = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const jokesRouter = require('../jokes/jokes-router.js');
 
@@ -17,7 +17,7 @@ server.use(cookieParser())
 
 
 server.use('/api/auth', authRouter);
-server.use('/api/jokes', jokesRouter);
+server.use('/api/jokes', auth(), jokesRouter);
 
 server.use((err, req, res, next) => {
     console.log(err);
